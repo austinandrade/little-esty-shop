@@ -16,13 +16,13 @@ class GitHubService
   end
 
   def get_repo_name
-    resp = conn.get('/repos/joeyh92989/little-esty-shop')
+    resp = conn.get('/repos/austinandrade/little-esty-shop')
     parsed = JSON.parse(resp.body, symbolize_names: true)
     name = parsed[:name]
   end
 
   def get_repo_commits_and_names
-    resp = conn.get('/repos/joeyh92989/little-esty-shop/stats/contributors')
+    resp = conn.get('/repos/austinandrade/little-esty-shop/stats/contributors')
 
     parsed = JSON.parse(resp.body, symbolize_names: true)
     names = []
@@ -34,7 +34,7 @@ class GitHubService
   end
 
   def get_repo_pulls
-    resp = conn.get('repos/joeyh92989/little-esty-shop/pulls?state=all')
+    resp = conn.get('repos/austinandrade/little-esty-shop/pulls?state=all')
 
     JSON.parse(resp.body, symbolize_names: true).count
   end
