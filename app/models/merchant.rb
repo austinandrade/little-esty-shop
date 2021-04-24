@@ -9,7 +9,7 @@ class Merchant < ApplicationRecord
   validates :status, presence: true
 
   def self.top_5_merchants_by_revenue
-    joins(:transactions, :invoice_items)
+    joins(:transactions)
     .select('merchants.*, sum(invoice_items.quantity * invoice_items.unit_price) as total_revenue')
     .group(:id)
     .where('transactions.result = ?', 0)
